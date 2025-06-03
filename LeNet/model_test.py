@@ -7,7 +7,7 @@ from model import LeNet
 
 
 def test_data_process():
-    test_data = FashionMNIST(root='./data',
+    test_data = FashionMNIST(root='././data',
                               train=False,
                               transform=transforms.Compose([transforms.Resize(size=28), transforms.ToTensor()]),
                               download=True)

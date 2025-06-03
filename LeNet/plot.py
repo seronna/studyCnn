@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 
-train_data = FashionMNIST(root='./data',
+train_data = FashionMNIST(root='/Users/xiahaike/project/study/python/studyCnn/data',
                           train=True,
                           transform=transforms.Compose([transforms.Resize(size=224), transforms.ToTensor()]),
                           download=True)

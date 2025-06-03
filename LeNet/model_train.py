@@ -10,9 +10,10 @@ from model import LeNet
 from torch import nn
 import torch
 import pandas as pd
+from tqdm import tqdm
 
 def train_val_data_process():
-    train_data = FashionMNIST(root='./data',
+    train_data = FashionMNIST(root='/Users/xiahaike/project/study/python/studyCnn/data',
                               train=True,
                               transform=transforms.Compose([transforms.Resize(size=28), transforms.ToTensor()]),
                               download=True)
@@ -123,12 +124,12 @@ def train_model_process(model, train_dataloader, val_dataloader, num_epochs):
         # 计算并保存训练集的loss值
         train_loss_all.append(train_loss / train_num)
         # 计算并保存训练集的准确率
-        train_acc_all.append(train_corrects.double().item() / train_num)
+        train_acc_all.append(train_corrects.float().item() / train_num)
 
         # 计算并保存验证集的loss值
         val_loss_all.append(val_loss / val_num)
         # 计算并保存验证集的准确率
-        val_acc_all.append(val_corrects.double().item() / val_num)
+        val_acc_all.append(val_corrects.float().item() / val_num)
 
         print("{} train loss:{:.4f} train acc: {:.4f}".format(epoch, train_loss_all[-1], train_acc_all[-1]))
         print("{} val loss:{:.4f} val acc: {:.4f}".format(epoch, val_loss_all[-1], val_acc_all[-1]))

@@ -10,9 +10,10 @@ from model import AlexNet
 from torch import nn
 import torch
 import pandas as pd
+from tqdm import trange
 
 def train_val_data_process():
-    train_data = FashionMNIST(root='./data',
+    train_data = FashionMNIST(root='/Users/xiahaike/project/study/python/studyCnn/data',
                               train=True,
                               transform=transforms.Compose([transforms.Resize(size=227), transforms.ToTensor()]),
                               download=True)
@@ -55,7 +56,7 @@ def train_model_process(model, train_dataloader, val_dataloader, num_epochs):
     # 当前时间
     since = time.time()
 
-    for epoch in range(num_epochs):
+    for epoch in trange(num_epochs):
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
         print("-"*10)
 
